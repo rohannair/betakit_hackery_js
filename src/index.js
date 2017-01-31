@@ -45,7 +45,7 @@ function parseTweets(lastTweet = null) {
         username: tweet.user.screen_name,
         url: url
       })
-    })
+    }).then(console.log)
   })
 
   // Wait 30 mins and try again

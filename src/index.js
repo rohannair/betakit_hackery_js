@@ -27,6 +27,7 @@ function parseTweets(lastTweet = null) {
   let attrs = {
     q,
     result_type: 'recent',
+    count: 100
   }
 
   if (lastTweet) {
@@ -41,10 +42,10 @@ function parseTweets(lastTweet = null) {
     statuses.forEach(tweet => {
       if (tweet.in_reply_to_status_id_str == "826164031455162368") {
         let url = buildUrl(tweet)
-        db('urls').insert({
-          username: tweet.user.screen_name,
-          url: url
-        }).then(console.log)
+
+        knex.raw(`INSERT INTO urls (id, username ,url) values (?, ?, ?) ON CONFLICT DO NOTHING`, [
+            tweet.id, tweet.user.screen_name, url
+        ])
       }
     })
   })

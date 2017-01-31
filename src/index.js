@@ -46,12 +46,13 @@ function parseTweets(lastTweet = null) {
         knex.raw(`INSERT INTO urls (id, username ,url) values (?, ?, ?) ON CONFLICT DO NOTHING`, [
             tweet.id, tweet.user.screen_name, url
         ])
+
+        // Wait 30 mins and try again
+        setTimeout(parseTweets.bind(this, tweet.id), 1000 * 60 * 15)
       }
     })
   })
 
-  // Wait 30 mins and try again
-  setTimeout(parseTweets.bind(this, lastTweet), 1000 * 60 * 15)
 }
 
 app.get('/tweets', (req, res) => {

@@ -65,6 +65,6 @@ app.get('/tweets', (req, res) => {
 app.listen(PORT, function(err) {
   if (err) return err
 
-  console.log('⚡  RUNNING')
+  console.log('⚡  RUNNING AT localhost:' + PORT)
   parseTweets()
 })

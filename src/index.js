@@ -16,6 +16,8 @@ const client = new Twitter({
   access_token_secret: process.env.ACCESS_TOKEN_SECRET
 })
 const db = knex(dbConfig)
+
+const HOST = process.env.HOST || 'localhost'
 const PORT = process.env.PORT || 3322
 
 const buildUrl = ({ user, id }) => `http://twitter.com/${user.screen_name}/status/${id}`

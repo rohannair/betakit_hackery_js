@@ -20,7 +20,7 @@ const db = knex(dbConfig)
 const HOST = process.env.HOST || 'localhost'
 const PORT = process.env.PORT || 3322
 
-const buildUrl = ({ user, id }) => `http://twitter.com/${user.screen_name}/status/${id}`
+const buildUrl = ({ user, id_str }) => `http://twitter.com/${user.screen_name}/status/${id_str}`
 
 function parseTweets(lastTweet = null) {
   let q = '@ddebow'

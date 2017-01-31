@@ -1,10 +1,16 @@
 module.exports = {
-  // development: {
+  development: {
     client: 'sqlite3',
       connection: {
         filename: "./mydb.sqlite"
       },
       debug: true
-  // },
-  // production: { client: 'pg', connection: process.env.DATABASE_URL }
+  },
+  production: {
+    client: 'sqlite3',
+    connection: {
+      filename: "./YOSON.sqlite"
+    },
+    debug: true
+  }
 };

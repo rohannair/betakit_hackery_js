@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "DEBUG=knex:query PORT=3322 node src/index.js",
-    "migation": "knex migrate:make",
+    "start": "DEBUG=knex:query NODE_ENV=development PORT=3322 node src/index.js",
+    "migration": "NODE_ENV=development knex migrate:make",
+    "migrate": "NODE_ENV=development knex migrate:latest",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

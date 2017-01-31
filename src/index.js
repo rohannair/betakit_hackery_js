@@ -41,13 +41,10 @@ function parseTweets(lastTweet = null) {
 
     statuses.forEach(tweet => {
       let url = buildUrl(tweet)
-      console.log('INSERTING USER', tweet.user.screen_name)
-      console.log('INSERTING URL', url)
-
       db('urls').insert({
         username: tweet.user.screen_name,
         url: url
-      }).then(console.log)
+      })
     })
   })
 

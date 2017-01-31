@@ -38,14 +38,15 @@ function parseTweets(lastTweet = null) {
 
   client.get(`search/tweets`, attrs, (err, { statuses }) => {
     if (err) console.log(err)
-
     statuses.forEach(tweet => {
-      let url = buildUrl(tweet)
-      db('urls').insert({
-        username: tweet.user.screen_name,
-        url: url
-      })
-    }).then(console.log)
+      if (tweet.in_reply_to_status_id_str == "826164031455162368") {
+        let url = buildUrl(tweet)
+        db('urls').insert({
+          username: tweet.user.screen_name,
+          url: url
+        }).then(console.log)
+      }
+    })
   })
 
   // Wait 30 mins and try again

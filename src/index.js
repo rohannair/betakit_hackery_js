@@ -15,7 +15,7 @@ const client = new Twitter({
   access_token_key: process.env.ACCESS_TOKEN,
   access_token_secret: process.env.ACCESS_TOKEN_SECRET
 })
-const db = knex(dbConfig[process.env.NODE_ENV])
+const db = knex(dbConfig)
 
 const HOST = process.env.HOST || 'localhost'
 const PORT = process.env.PORT || 3322

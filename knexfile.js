@@ -7,10 +7,7 @@ module.exports = {
       debug: true
   },
   production: {
-    client: 'sqlite3',
-    connection: {
-      filename: "./YOSON.sqlite"
-    },
-    debug: true
+    client: 'pg',
+    connection: `${process.env.DATABASE_URL}?ssl=true`
   }
 };
